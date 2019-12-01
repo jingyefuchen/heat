@@ -21,6 +21,18 @@ class index():
     def GET(self):
         return render.index()
 
+    def POST(self):
+        data = web.input()
+        sex = data.get("sex")
+        weight = float(data.get("weight"))
+        height = float(data.get("height"))
+        age = float(data.get("age"))
+        if sex == "M":
+            heat = 66 + 13.7 * weight + 5 * height - 6.8 * age
+        else:
+            heat = 655 + 9.6 * weight + 1.8 * height - 4.7 * age
+        return "your base heat is %s" % heat
+
 class add():
     def GET(self):
         return "hello,world!"
